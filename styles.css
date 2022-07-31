@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between
+}
+
+div {
+    background-color: blueviolet;
+    width: 10px;
+    height: 10px;
+}
+
+header {
+    text-align: center;
+}
+
+
+#labels {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+#label1 {
+    width: 800px;
+}
+
+#label2 {
+    width: 200px;
+}
+
+#main {
+    display: flex;
+}
+
+#palette {
+    width: 200px;
+}
+
+#sketchPad {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 800px;
+    height: 800px;
+}
