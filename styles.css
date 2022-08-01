@@ -6,8 +6,8 @@ body {
 
 div {
     background-color: blueviolet;
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
 }
 
 header {
@@ -22,10 +22,14 @@ header {
 }
 
 #label1 {
+    margin: 0;
+    padding: 0;
     width: 800px;
 }
 
 #label2 {
+    margin: 0;
+    padding: 0;
     width: 200px;
 }
 
