@@ -2,18 +2,31 @@ const sketchPad = document.querySelector("#sketchPad");
 
 let rowCount = 0;
 let colCount = 0;
-let gridSize = 25; // set default grid size
+let padSize = 10; // set default grid size
 
-createNodes(gridSize);
-createSquares(gridSize);
+
+createNodes(padSize);
+createSquares(padSize);
 
 document.querySelector("#gridBtn").addEventListener("click", updateSquares);
+
+
+updateArray();
+
+
+
+
+
+
+function blue(e) {
+    e.currentTarget.style.backgroundColor = "yellow";
+}
 
 function createNodes(a) {
     removeSquares();
     for (i = 0; i < a; i++) {
         const nodes = document.createElement("div");
-        nodes.classList.add(`c${i}`)
+        nodes.classList.add(`c${i}`);
         nodes.textContent = "";
         sketchPad.appendChild(nodes);
     }
@@ -24,13 +37,16 @@ function createSquares(a) {
     for (i = 0; i < a; i++) {
         for (j = 0; j < a; j++) {
             const squares = document.createElement("div");
-            squares.classList.add(`r${j}c${i}`);
+            //squares.classList.add(`r${j}c${i}`);
+            squares.setAttribute("id", `r${j}c${i}`);
+            squares.setAttribute("class", "divSquare");
             squares.textContent = "";
             let = position = document.querySelector(`.c${count}`)
             position.appendChild(squares);
         }
         count++;
     }
+    updateArray()
 }
 
 function removeSquares() {
@@ -40,16 +56,20 @@ function removeSquares() {
     }
 }
 
+function updateArray() {
+    let collection = document.getElementsByClassName("divSquare");
+
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].addEventListener('mouseover', blue);
+    }
+}
+
 function updateSquares() {
     userInput = Number(prompt("Enter new grid size (Required range: 4 - 10):"));
     while (userInput == NaN || userInput < 4 || userInput > 100) {
         userInput = Number(prompt("Invalid input, try again (Required range: 4 - 100)."));
     }
-    gridSize = userInput;
-    createNodes(gridSize);
-    createSquares(gridSize);
-    return;
+    padSize = userInput;
+    createNodes(padSize);
+    createSquares(padSize);
 }
-
-
-
