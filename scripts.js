@@ -2,7 +2,7 @@ const sketchPad = document.querySelector("#sketchPad");
 
 let rowCount = 0;
 let colCount = 0;
-let padSize = 10; // set default grid size
+let padSize = 100; // set default grid size
 
 
 createNodes(padSize);
@@ -14,7 +14,16 @@ document.querySelector("#gridBtn").addEventListener("click", updateSquares);
 updateArray();
 
 
-
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+   
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
 
 
 

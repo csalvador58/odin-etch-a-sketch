@@ -1,20 +1,30 @@
+/*
 body {
     display: flex;
     flex-direction: column;
     justify-content:space-between
 }
+*/
 
-div {
-    background-color: blueviolet;
-    width: 20px;
-    height: 20px;
+body,h1,h2,h3,h4,h5 {
+    font-family: "Poppins", sans-serif;
+}
+body {
+    font-size: 16px;
 }
 
+.divSquare {
+    background-color: blueviolet;
+    width: 5px;
+    height: 5px;
+}
+/*
 header {
     text-align: center;
 }
+*/
 
-
+/*
 #labels {
     display: flex;
     flex-direction: row;
@@ -40,11 +50,11 @@ header {
 #palette {
     width: 200px;
 }
-
+*/
 #sketchPad {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 800px;
-    height: 800px;
+    width: 700px;
+    height: 700px;
 }
