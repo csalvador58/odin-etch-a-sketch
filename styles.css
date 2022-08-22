@@ -1,12 +1,5 @@
-/*
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between
-}
-*/
 
-body,h1,h2,h3,h4,h5 {
+body,h1,h3 {
     font-family: "Poppins", sans-serif;
 }
 body {
@@ -18,39 +11,7 @@ body {
     width: 5px;
     height: 5px;
 }
-/*
-header {
-    text-align: center;
-}
-*/
 
-/*
-#labels {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-}
-
-#label1 {
-    margin: 0;
-    padding: 0;
-    width: 800px;
-}
-
-#label2 {
-    margin: 0;
-    padding: 0;
-    width: 200px;
-}
-
-#main {
-    display: flex;
-}
-
-#palette {
-    width: 200px;
-}
-*/
 #sketchPad {
     display: flex;
     flex-direction: row;
