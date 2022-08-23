@@ -3,17 +3,19 @@ const sketchPad = document.querySelector("#sketchPad");
 let rowCount = 0;
 let colCount = 0;
 let padSize = 80; // set default grid size
-let color = "yellow";
+const painter = {
+    color: "yellow"
+};
 
 createNodes(padSize);
 createSquares(padSize);
 
 document.querySelector("#gridBtn").addEventListener("click", updateSquares);
-color = document.querySelector("#redPaint").addEventListener("click", updateColorRed);
-color = document.querySelector("#greenPaint").addEventListener("click", updateColorGreen);
-color = document.querySelector("#bluePaint").addEventListener("click", updateColorBlue);
-color = document.querySelector("#whitePaint").addEventListener("click", updateColorWhite);
-color = document.querySelector("#blackPaint").addEventListener("click", updateColorBlack);
+document.querySelector("#redPaint").addEventListener("click", () => { updateColor("red"); });
+document.querySelector("#greenPaint").addEventListener("click", () => { updateColor("green"); });
+document.querySelector("#bluePaint").addEventListener("click", () => { updateColor("blue"); });
+document.querySelector("#whitePaint").addEventListener("click", () => { updateColor("white"); });
+document.querySelector("#blackPaint").addEventListener("click", () => { updateColor("black"); });
 
 updateArray();
 
@@ -32,7 +34,7 @@ function w3_open() {
 
 
 function paintColor(e) {
-    e.currentTarget.style.backgroundColor = color;
+    e.currentTarget.style.backgroundColor = painter.color;
 }
 
 function createNodes(a) {
@@ -77,34 +79,10 @@ function updateArray() {
     }
 }
 
-function updateColorRed() {
-    color = "red";
-    console.log(color);
-    return color;
-}
-
-function updateColorGreen() {
-    color = "green";
-    console.log(color);
-    return color;
-}
-
-function updateColorBlue() {
-    color = "blue";
-    console.log(color);
-    return color;
-}
-
-function updateColorWhite() {
-    color = "white";
-    console.log(color);
-    return color;
-}
-
-function updateColorBlack() {
-    color = "black";
-    console.log(color);
-    return color;
+function updateColor(a) {
+    painter.color = a;
+    console.log(painter.color);
+    return;
 }
 
 function updateSquares() {
