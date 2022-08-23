@@ -4,18 +4,22 @@ let rowCount = 0;
 let colCount = 0;
 let padSize = 80; // set default grid size
 const painter = {
-    color: "yellow"
+    color: "yellow",
+    multiColor: false,
+    counter: 0,
 };
+const colorOptions = ["red", "green", "blue", "white", "black"];
 
 createNodes(padSize);
 createSquares(padSize);
 
 document.querySelector("#gridBtn").addEventListener("click", updateSquares);
-document.querySelector("#redPaint").addEventListener("click", () => { updateColor("red"); });
-document.querySelector("#greenPaint").addEventListener("click", () => { updateColor("green"); });
-document.querySelector("#bluePaint").addEventListener("click", () => { updateColor("blue"); });
-document.querySelector("#whitePaint").addEventListener("click", () => { updateColor("white"); });
-document.querySelector("#blackPaint").addEventListener("click", () => { updateColor("black"); });
+document.querySelector("#redPaint").addEventListener("click", () => { updateColor(0); });
+document.querySelector("#greenPaint").addEventListener("click", () => { updateColor(1); });
+document.querySelector("#bluePaint").addEventListener("click", () => { updateColor(2); });
+document.querySelector("#whitePaint").addEventListener("click", () => { updateColor(3); });
+document.querySelector("#blackPaint").addEventListener("click", () => { updateColor(4); });
+document.querySelector("#multiPaint").addEventListener("click", () => { updateColor("true"); });
 
 updateArray();
 
@@ -34,7 +38,20 @@ function w3_open() {
 
 
 function paintColor(e) {
-    e.currentTarget.style.backgroundColor = painter.color;
+    if (painter.multiColor == "true") {
+        painter.counter++;
+        console.log(painter.counter);
+        if (painter.counter % 10 == 0) {
+            painter.color = colorOptions[Math.floor(Math.random() * 5)];
+            e.currentTarget.style.backgroundColor = painter.color;
+            console.log(painter.color);
+        } else {
+            e.currentTarget.style.backgroundColor = painter.color;
+        }
+    } else {
+        e.currentTarget.style.backgroundColor = painter.color;
+    }
+    
 }
 
 function createNodes(a) {
@@ -80,9 +97,17 @@ function updateArray() {
 }
 
 function updateColor(a) {
-    painter.color = a;
-    console.log(painter.color);
-    return;
+    if (a == "true") {
+        painter.multiColor = "true";
+        console.log(painter.color);
+        return;
+    } else {
+        painter.multiColor = "false";
+        painter.counter = 0;
+        painter.color = colorOptions[a];
+        console.log(painter.color);
+        return;
+    }
 }
 
 function updateSquares() {
