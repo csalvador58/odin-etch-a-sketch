@@ -20,39 +20,12 @@ document.querySelector("#bluePaint").addEventListener("click", () => { updateCol
 document.querySelector("#whitePaint").addEventListener("click", () => { updateColor(3); });
 document.querySelector("#blackPaint").addEventListener("click", () => { updateColor(4); });
 document.querySelector("#multiPaint").addEventListener("click", () => { updateColor("true"); });
+document.querySelector("#clearPaint").addEventListener("click", () => { 
+    createNodes(padSize);
+    createSquares(padSize);
+ });
 
 updateArray();
-
-
-// Script to open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-  }
-   
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-}
-
-
-
-function paintColor(e) {
-    if (painter.multiColor == "true") {
-        painter.counter++;
-        console.log(painter.counter);
-        if (painter.counter % 10 == 0) {
-            painter.color = colorOptions[Math.floor(Math.random() * 5)];
-            e.currentTarget.style.backgroundColor = painter.color;
-            console.log(painter.color);
-        } else {
-            e.currentTarget.style.backgroundColor = painter.color;
-        }
-    } else {
-        e.currentTarget.style.backgroundColor = painter.color;
-    }
-    
-}
 
 function createNodes(a) {
     removeSquares();
@@ -81,6 +54,22 @@ function createSquares(a) {
     updateArray()
 }
 
+function paintColor(e) {
+    if (painter.multiColor == "true") {
+        painter.counter++;
+        console.log(painter.counter);
+        if (painter.counter % 10 == 0) {
+            painter.color = colorOptions[Math.floor(Math.random() * 5)];
+            e.currentTarget.style.backgroundColor = painter.color;
+            console.log(painter.color);
+        } else {
+            e.currentTarget.style.backgroundColor = painter.color;
+        }
+    } else {
+        e.currentTarget.style.backgroundColor = painter.color;
+    }
+}
+
 function removeSquares() {
     const parent = document.querySelector("#sketchPad");
     while(parent.firstChild) {
@@ -89,7 +78,9 @@ function removeSquares() {
 }
 
 function updateArray() {
-    let collection = document.getElementsByClassName("divSquare");
+    const collection = document.getElementsByClassName("divSquare");
+
+    //collection.forEach(collection => collection.addEventListener('mouseover', paintColor));
 
     for (let i = 0; i < collection.length; i++) {
         collection[i].addEventListener('mouseover', paintColor);
@@ -111,11 +102,27 @@ function updateColor(a) {
 }
 
 function updateSquares() {
-    userInput = Number(prompt("Enter new grid size (Required range: 30 - 100):"));
-    while (userInput == NaN || userInput < 30 || userInput > 100) {
-        userInput = Number(prompt("Invalid input, try again (Required range: 30 - 100)."));
+    userInput = prompt("Enter new grid size (Required range: 30 - 100):");
+    while (isNaN(userInput) || userInput < 30 || userInput > 100) {
+        console.log(userInput);
+        if (userInput === null) {
+            return;
+        } else {
+            userInput = prompt("Invalid input, try again (Required range: 30 - 100).");           
+        }
     }
-    padSize = userInput;
-    createNodes(padSize);
-    createSquares(padSize);
+        padSize = userInput;
+        createNodes(padSize);
+        createSquares(padSize);
+}
+
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+   
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
 }
