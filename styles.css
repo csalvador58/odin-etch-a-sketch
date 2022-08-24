@@ -7,9 +7,9 @@ body {
 }
 
 .divSquare {
-    background-color: blueviolet;
-    width: 5px;
-    height: 5px;
+    background-color: rgb(177, 161, 193);
+    width: 8px;
+    height: 8px;
 }
 
 #sketchPad {

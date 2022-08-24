@@ -2,7 +2,7 @@ const sketchPad = document.querySelector("#sketchPad");
 
 let rowCount = 0;
 let colCount = 0;
-let padSize = 80; // set default grid size
+let padSize = 50; // set default grid size
 const painter = {
     color: "yellow",
     multiColor: false,
@@ -102,13 +102,13 @@ function updateColor(a) {
 }
 
 function updateSquares() {
-    userInput = prompt("Enter new grid size (Required range: 30 - 100):");
-    while (isNaN(userInput) || userInput < 30 || userInput > 100) {
+    userInput = prompt("Enter new grid size (Required range: 30 - 80):");
+    while (isNaN(userInput) || userInput < 30 || userInput > 80) {
         console.log(userInput);
         if (userInput === null) {
             return;
         } else {
-            userInput = prompt("Invalid input, try again (Required range: 30 - 100).");           
+            userInput = prompt("Invalid input, try again (Required range: 30 - 80).");           
         }
     }
         padSize = userInput;
